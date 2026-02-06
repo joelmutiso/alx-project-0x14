@@ -1,14 +1,20 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import withPWAInit from "@ducanh2912/next-pwa";
+import type { NextConfig } from "next"; // 1. Import the type
+
+const withPWA = withPWAInit({
+  dest: "public",
+});
+
+const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'm.media-amazon.com',
+        protocol: "https",
+        hostname: "m.media-amazon.com",
       },
     ],
   },
 };
 
-export default nextConfig;
+export default withPWA(nextConfig);
